@@ -75,6 +75,12 @@ def main():
         with open("list.txt", "r") as f:
             # Membaca file dan menghapus duplikat
             hosts = list(dict.fromkeys([line.strip() for line in f if line.strip()]))
+            
+        # Menyimpan kembali list yang sudah difilter ke list.txt agar duplikat terhapus secara permanen
+        with open("list.txt", "w") as f:
+            for host in hosts:
+                f.write(f"{host}\n")
+                
     except FileNotFoundError:
         print("File list.txt tidak ditemukan! Buat dulu filenya.")
         return
